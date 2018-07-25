@@ -17,9 +17,10 @@
                     </ul>
                     <ul class="nav navbar-nav pull-right">
                         <?php if(!empty($_SESSION['logged_in'])): ?>
-                            <li><a class="navbar-brand" href="#">logout</a></li>
+                            <li><a class="navbar-brand" href="/auth/logout">logout</a></li>
+                            <li><a class="navbar-brand" href="/gallery">Gallery</a></li>
                         <?php else: ?>
-                            <li><a class="navbar-brand" href="#">login</a></li>
+                            <li><a class="navbar-brand" href="/auth/login">login</a></li>
                         <?php endif; ?>
                     </ul>
                 </div>

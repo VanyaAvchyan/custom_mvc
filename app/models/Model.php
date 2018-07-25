@@ -2,23 +2,17 @@
 namespace app\models;
 
 abstract class Model {
-    private $dbh = null;
-    public function __construct() {
-        $config = getCongig();
-        try {
-            $this->dbh = new \PDO('mysql:host='.$config['DB_HOST'].';dbname='.$config['DB_NAME'],$config['DB_USERNAME'],$config['DB_PASSWORD']); 
-        } 
-        catch (PDOException $exc) {
-            dd($exc->getMessage());
-        }
-    }
-    
-    public function getCurrentConn()
+    public $data = null;
+    public function __construct()
     {
-        return $this->dbh;
+        $config = config();
+        $class_name = explode('\\',static::class);
+        $class_name = array_pop($class_name);
+        $class_name = str_replace('Model','', $class_name);
+        $this->data = json_decode(file_get_contents(ROOT_PATH.$config['DB_PATH'].'/'.strtolower($class_name).'.json'));
     }
 
-        public function __destruct() {
-        $this->dbh = NULL;
+    public function __destruct() {
+        $this->data = NULL;
     }
 }

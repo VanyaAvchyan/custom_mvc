@@ -1,11 +1,10 @@
 <?php
 namespace app\controllers;
+use app\views\View;
 class DefaultController extends Controller
 {
     public function indexAction()
     {
-        \app\views\View::render('index', [
-                    'tasks' => 11111111
-                ]);
+        View::render('index');
     }
 }

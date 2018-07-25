@@ -6,12 +6,12 @@
  * @param string|null $name config key name
  */
 $config = parse_ini_file('config.ini');
-function getCongig($name = null)
+function config($name = null)
 {
     global $config;
     if(!$name)
         return $config;
-    return isset($config[$name])?$config[$name]:null;
+    return isset($config[$name])?$config[$name]: null;
 }
 
 /**

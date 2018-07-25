@@ -17,6 +17,9 @@
         } catch (\Exception $ex) {
             echo $ex->getMessage();
             exit;
+        } catch (\ReflectionException $ex) {
+            echo $ex->getMessage();
+            exit;
         }
     }
     spl_autoload_register('autoloader');
